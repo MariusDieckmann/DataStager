@@ -42,5 +42,4 @@ func InitGrpcUpdater() *GrpcUpdater {
 	}
 
 	return &gprcUpdater
-
 }

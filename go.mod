@@ -3,10 +3,9 @@ module github.com/MariusDieckmann/DataStager
 go 1.15
 
 require (
-	github.com/ag-computational-bio/bakta-web-api/go v0.3.1-alpha
+	github.com/ag-computational-bio/bakta-web-api/go v0.3.3-alpha
 	github.com/aws/aws-sdk-go v1.37.8
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
-	github.com/golang/protobuf v1.4.3 // indirect
 	github.com/google/go-cmp v0.5.4 // indirect
 	github.com/gopherjs/gopherjs v0.0.0-20210202160940-bed99a852dfe // indirect
 	github.com/kr/text v0.2.0 // indirect
