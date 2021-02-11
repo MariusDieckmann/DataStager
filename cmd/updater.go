@@ -44,23 +44,23 @@ var updateCommand = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(uploadCommand)
-	uploadCommand.Flags().StringP("status", "s", "", "Updated job status")
-	uploadCommand.Flags().StringP("jobid", "j", "", "JobID of the job to update")
-	uploadCommand.Flags().StringP("secret", "k", "", "Secret of the job to update")
-	uploadCommand.Flags().StringP("error", "k", "", "Optionally: The reported error")
+	rootCmd.AddCommand(updateCommand)
+	updateCommand.Flags().StringP("status", "s", "", "Updated job status")
+	updateCommand.Flags().StringP("jobid", "j", "", "JobID of the job to update")
+	updateCommand.Flags().StringP("secret", "k", "", "Secret of the job to update")
+	updateCommand.Flags().StringP("error", "e", "", "Optionally: The reported error")
 
-	err := uploadCommand.MarkFlagRequired("status")
+	err := updateCommand.MarkFlagRequired("status")
 	if err != nil {
 		log.Fatalln(err.Error())
 	}
 
-	err = uploadCommand.MarkFlagRequired("jobid")
+	err = updateCommand.MarkFlagRequired("jobid")
 	if err != nil {
 		log.Fatalln(err.Error())
 	}
 
-	err = uploadCommand.MarkFlagRequired("secret")
+	err = updateCommand.MarkFlagRequired("secret")
 	if err != nil {
 		log.Fatalln(err.Error())
 	}
@@ -70,12 +70,14 @@ func runUpdate(jobID string, secret string, statusString string, errorString str
 	var status api.JobStatusEnum
 
 	switch statusString {
+	case "running":
+		status = api.JobStatusEnum_RUNNING
 	case "error":
 		status = api.JobStatusEnum_ERROR
 	case "finished":
-		status = api.JobStatusEnum_RUNNING
+		status = api.JobStatusEnum_SUCCESFULL
 	default:
-		log.Fatalln(fmt.Sprintf("%v is no a valid status, please use: error, finished"))
+		log.Fatalln(fmt.Sprintf("%v is no a valid status, please use: error, finished", statusString))
 	}
 
 	grpcUpdater := updater.InitGrpcUpdater()
