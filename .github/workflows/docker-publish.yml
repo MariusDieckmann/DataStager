@@ -74,3 +74,10 @@ jobs:
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+
+          echo "${{ secrets.QUAY_WRITE_ROBOT_PW }}" | docker login quay.io -u ${{ secrets.QUAY_WRITE_ROBOT_NAME }} --password-stdin
+
+          QUAY_IMAGE_ID=quay.io/mariusdieckmann/datastager
+
+          docker tag $IMAGE_NAME $QUAY_IMAGE_ID:$VERSION
+          docker push $QUAY_IMAGE_ID:$VERSION
