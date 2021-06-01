@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/MariusDieckmann/DataStager/updater"
-	"github.com/ag-computational-bio/bakta-web-api/go/api"
+	api "github.com/ag-computational-bio/bakta-web-api-go/bakta/web/api/proto/v1"
 
 	"github.com/spf13/cobra"
 )
